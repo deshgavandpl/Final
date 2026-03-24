@@ -205,11 +205,41 @@
                 <button onclick="navigateTo('stats')" class="nav-link pb-1 hover:text-blue-600 transition-colors" data-target="stats">Stats</button>
                 <button onclick="navigateTo('media')" class="nav-link pb-1 hover:text-blue-600 transition-colors" data-target="media">Media</button>
                 <button onclick="navigateTo('hub')" class="nav-link pb-1 hover:text-blue-600 transition-colors" data-target="hub">Player Hub</button>
+                <button onclick="navigateTo('admin')" class="btn-secondary px-4 py-1.5 text-xs text-slate-500"><span class="mr-1">🔒</span> Admin</button>
             </div>
 
-            <button onclick="navigateTo('admin')" class="hidden md:flex btn-secondary px-4 py-1.5 text-xs text-slate-500"><span class="mr-1">🔒</span> Admin</button>
+            <!-- Mobile Menu Toggle Button -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
     </nav>
+
+    <!-- MOBILE NAVIGATION OVERLAY (Gen-Z Style) -->
+    <div id="mobile-nav" class="fixed inset-0 bg-[#0a192f]/98 backdrop-blur-xl z-[100] transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center lg:hidden">
+        <!-- Close Button -->
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-white/70 hover:text-[#00e5ff] p-2 transition-colors">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <!-- Mobile Links -->
+        <div class="flex flex-col gap-6 text-center w-full px-8 overflow-y-auto max-h-screen py-20">
+            <button onclick="navigateTo('home')" class="text-3xl sm:text-4xl font-black italic text-white uppercase tracking-widest hover:text-[#00e5ff] transition-colors transform hover:-skew-x-6">Home</button>
+            <button onclick="navigateTo('league')" class="text-3xl sm:text-4xl font-black italic text-white uppercase tracking-widest hover:text-[#00e5ff] transition-colors transform hover:-skew-x-6">League</button>
+            <button onclick="navigateTo('teams')" class="text-3xl sm:text-4xl font-black italic text-white uppercase tracking-widest hover:text-[#00e5ff] transition-colors transform hover:-skew-x-6">Teams</button>
+            <button onclick="navigateTo('auction')" class="text-3xl sm:text-4xl font-black italic text-white uppercase tracking-widest hover:text-[#00e5ff] transition-colors transform hover:-skew-x-6">Auction</button>
+            <button onclick="navigateTo('live')" class="text-3xl sm:text-4xl font-black italic text-white uppercase tracking-widest hover:text-[#00e5ff] transition-colors transform hover:-skew-x-6 flex justify-center items-center gap-3"><span class="live-dot w-3 h-3"></span> Live Score</button>
+            <button onclick="navigateTo('stats')" class="text-3xl sm:text-4xl font-black italic text-white uppercase tracking-widest hover:text-[#00e5ff] transition-colors transform hover:-skew-x-6">Stats</button>
+            <button onclick="navigateTo('media')" class="text-3xl sm:text-4xl font-black italic text-white uppercase tracking-widest hover:text-[#00e5ff] transition-colors transform hover:-skew-x-6">Media</button>
+            <button onclick="navigateTo('hub')" class="text-3xl sm:text-4xl font-black italic text-[#D4AF37] uppercase tracking-widest hover:text-yellow-200 transition-colors transform hover:-skew-x-6">Player Hub</button>
+            
+            <div class="h-px w-1/2 mx-auto bg-slate-800 my-4"></div>
+            
+            <button onclick="navigateTo('admin')" class="text-xl font-bold text-red-500 uppercase tracking-widest hover:text-red-400">🔒 Admin Access</button>
+        </div>
+    </div>
 
     <!-- MAIN APP CONTAINER -->
     <main class="flex-grow w-full max-w-[1400px] mx-auto p-4 md:p-6 lg:p-8">
@@ -219,7 +249,7 @@
         <!-- ========================================== -->
         <div id="view-home" class="app-view active-view">
             <!-- ELECTRIC HERO SECTION (Lightning Speed Gen-Z UI) -->
-            <div class="clean-card hero-bg bg-slate-950 mb-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12 shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-h-[80vh] lg:min-h-[calc(100vh-100px)] !border-0 rounded-3xl group">
+            <div class="clean-card hero-bg bg-slate-950 mb-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-h-[80vh] lg:min-h-[calc(100vh-100px)] !border-0 rounded-3xl group">
                 
                 <!-- Lightning Grid Background -->
                 <div class="absolute inset-0 energy-grid opacity-30 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none z-0 transform scale-110"></div>
@@ -232,38 +262,38 @@
                 <div class="hero-overlay pointer-events-none z-0 !bg-gradient-to-r !from-slate-950/95 !to-slate-900/80"></div>
 
                 <!-- Text & Buttons -->
-                <div class="relative z-10 max-w-xl w-full p-8 md:p-12 lg:p-16">
+                <div class="relative z-10 max-w-xl w-full p-6 sm:p-8 md:p-12 lg:p-16">
                     
                     <!-- Energy Badge -->
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00e5ff]/10 border border-[#00e5ff]/30 text-[#00e5ff] font-black text-xs tracking-[0.2em] uppercase mb-8 transform -skew-x-12 shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00e5ff]/10 border border-[#00e5ff]/30 text-[#00e5ff] font-black text-[10px] sm:text-xs tracking-[0.2em] uppercase mb-6 sm:mb-8 transform -skew-x-12 shadow-[0_0_15px_rgba(0,229,255,0.2)]">
                         <span class="animate-pulse">⚡</span> High-Voltage T10 Cricket
                     </div>
 
-                    <!-- Skewed Dynamic Heading -->
-                    <h1 class="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-[0.9] tracking-tighter uppercase transform -skew-x-6">
+                    <!-- Skewed Dynamic Heading - Resized for mobile -->
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-6 leading-[0.9] tracking-tighter uppercase transform -skew-x-6">
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300 drop-shadow-lg">Deshgavhan</span> <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00e5ff] via-blue-500 to-purple-600 bg-animated-gradient drop-shadow-[0_0_20px_rgba(0,229,255,0.4)] block mt-2">Premier</span>
-                        <span class="text-stroke-electric block mt-1 tracking-wider">League</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00e5ff] via-blue-500 to-purple-600 bg-animated-gradient drop-shadow-[0_0_20px_rgba(0,229,255,0.4)] block mt-2 sm:mt-3">Premier</span>
+                        <span class="text-stroke-electric block mt-1 sm:mt-2 tracking-wider">League</span>
                     </h1>
                     
                     <!-- Accent Line Paragraph -->
-                    <p class="text-slate-300 text-lg md:text-xl mb-10 font-medium leading-relaxed border-l-4 border-[#00e5ff] pl-5 bg-gradient-to-r from-slate-900/50 to-transparent py-2">
+                    <p class="text-slate-300 text-base sm:text-lg md:text-xl mb-8 sm:mb-10 font-medium leading-relaxed border-l-4 border-[#00e5ff] pl-4 sm:pl-5 bg-gradient-to-r from-slate-900/50 to-transparent py-2">
                         Cricket's ultimate battleground. Feel the surge. Witness the lightning pace, the unmatched passion, and the glory.
                     </p>
                     
                     <!-- Fast/Skewed Buttons -->
-                    <div class="flex flex-wrap gap-5">
-                        <button onclick="navigateTo('hub')" class="px-8 py-4 rounded-xl bg-gradient-to-r from-[#00e5ff] to-blue-600 text-slate-950 font-black italic uppercase tracking-wider hover:from-cyan-400 hover:to-blue-500 transition-all shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_40px_rgba(0,229,255,0.6)] transform hover:-translate-y-1 hover:scale-105 skew-x-[-8deg]">
-                            <span class="block transform skew-x-[8deg]">⚡ Enter the Draft</span>
+                    <div class="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5">
+                        <button onclick="navigateTo('hub')" class="w-full sm:w-auto px-6 sm:px-8 py-4 rounded-xl bg-gradient-to-r from-[#00e5ff] to-blue-600 text-slate-950 font-black italic uppercase tracking-wider hover:from-cyan-400 hover:to-blue-500 transition-all shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_40px_rgba(0,229,255,0.6)] transform hover:-translate-y-1 hover:scale-105 skew-x-[0deg] sm:skew-x-[-8deg]">
+                            <span class="block transform sm:skew-x-[8deg]">⚡ Enter the Draft</span>
                         </button>
-                        <button onclick="navigateTo('teams')" class="px-8 py-4 rounded-xl bg-transparent border-2 border-[#00e5ff]/50 text-[#00e5ff] font-black italic uppercase tracking-wider hover:bg-[#00e5ff]/10 hover:border-[#00e5ff] transition-all transform hover:-translate-y-1 hover:scale-105 skew-x-[-8deg] shadow-[inset_0_0_20px_rgba(0,229,255,0)] hover:shadow-[inset_0_0_20px_rgba(0,229,255,0.2)]">
-                            <span class="block transform skew-x-[8deg]">View Franchises</span>
+                        <button onclick="navigateTo('teams')" class="w-full sm:w-auto px-6 sm:px-8 py-4 rounded-xl bg-transparent border-2 border-[#00e5ff]/50 text-[#00e5ff] font-black italic uppercase tracking-wider hover:bg-[#00e5ff]/10 hover:border-[#00e5ff] transition-all transform hover:-translate-y-1 hover:scale-105 skew-x-[0deg] sm:skew-x-[-8deg] shadow-[inset_0_0_20px_rgba(0,229,255,0)] hover:shadow-[inset_0_0_20px_rgba(0,229,255,0.2)]">
+                            <span class="block transform sm:skew-x-[8deg]">View Franchises</span>
                         </button>
                     </div>
                 </div>
                 
                 <!-- Glowing Map Image (Floating) - UNTOUCHED AS REQUESTED -->
-                <div class="relative z-10 w-full max-w-md md:max-w-sm lg:max-w-md shrink-0 p-8 md:p-12 lg:p-16">
+                <div class="relative z-10 w-full max-w-[280px] sm:max-w-sm lg:max-w-md shrink-0 p-4 sm:p-8 md:p-12 lg:p-16 mx-auto md:mx-0">
                     <!-- Glow & Float Wrapper -->
                     <div class="hero-floating hero-glow-box relative rounded-[2rem] p-1 bg-gradient-to-br from-[#D4AF37]/60 via-transparent to-[#D4AF37]/20 transition-shadow duration-500">
                         <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Deshgavhan Map" class="w-full h-auto rounded-[1.8rem] border-4 border-[#0a192f] object-cover bg-[#0a192f]">
@@ -276,12 +306,12 @@
             <!-- Enhanced High-Energy Quick Highlights -->
             <div class="grid lg:grid-cols-3 gap-8 mb-8">
                 <!-- QUICK HIGHLIGHTS -->
-                <div class="lg:col-span-2 clean-card p-6 bg-slate-900 border-slate-800 shadow-xl relative overflow-hidden group">
+                <div class="lg:col-span-2 clean-card p-4 sm:p-6 bg-slate-900 border-slate-800 shadow-xl relative overflow-hidden group">
                     <!-- Subtle bg grid for cards -->
                     <div class="absolute inset-0 energy-grid opacity-20 pointer-events-none"></div>
                     <h2 class="text-lg font-black italic text-white mb-5 border-b border-slate-700 pb-2 uppercase tracking-wide flex items-center gap-2"><span class="text-[#00e5ff]">⚡</span> Pulse Check</h2>
                     
-                    <div class="grid md:grid-cols-3 gap-4 relative z-10">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 relative z-10">
                         <div class="bg-slate-800 rounded-xl p-4 border border-slate-700 text-center lightning-hover transition-all">
                             <div class="text-3xl mb-2 drop-shadow-md">👑</div>
                             <h3 class="font-bold text-amber-400 text-xs tracking-widest uppercase">Top Player (AI)</h3>
@@ -330,13 +360,13 @@
             <h1 class="text-3xl font-bold text-slate-900 mb-6">League Information</h1>
             <div class="clean-card overflow-hidden">
                 <!-- Inner Tabs -->
-                <div class="flex border-b border-slate-200 bg-slate-50/50 overflow-x-auto">
-                    <button onclick="switchInnerTab('league', 'about')" id="tab-league-about" class="tab-btn active px-6 py-4 text-sm">What is DPL</button>
-                    <button onclick="switchInnerTab('league', 'history')" id="tab-league-history" class="tab-btn px-6 py-4 text-sm">History / Seasons</button>
-                    <button onclick="switchInnerTab('league', 'rules')" id="tab-league-rules" class="tab-btn px-6 py-4 text-sm">Structure & Rules</button>
+                <div class="flex border-b border-slate-200 bg-slate-50/50 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                    <button onclick="switchInnerTab('league', 'about')" id="tab-league-about" class="tab-btn active px-6 py-4 text-sm shrink-0">What is DPL</button>
+                    <button onclick="switchInnerTab('league', 'history')" id="tab-league-history" class="tab-btn px-6 py-4 text-sm shrink-0">History / Seasons</button>
+                    <button onclick="switchInnerTab('league', 'rules')" id="tab-league-rules" class="tab-btn px-6 py-4 text-sm shrink-0">Structure & Rules</button>
                 </div>
                 
-                <div class="p-8">
+                <div class="p-6 sm:p-8">
                     <div id="content-league-about" class="block">
                         <h2 class="text-2xl font-bold mb-4">About the League</h2>
                         <p class="text-slate-600 mb-6 leading-relaxed">The Deshgavhan Premier League is a community-driven, highly competitive cricket tournament aimed at discovering and showcasing local talent. Operating on a professional franchise model.</p>
@@ -381,14 +411,16 @@
                 <!-- Populated by JS -->
             </div>
 
-            <div class="clean-card p-6 bg-amber-50/50 border-amber-100">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="text-2xl">🔥</div>
-                    <h2 class="text-xl font-bold text-amber-900">Unassigned Player Pool</h2>
-                    <span class="ml-auto bg-amber-200 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">Awaiting Auction</span>
+            <div class="clean-card p-4 sm:p-6 bg-amber-50/50 border-amber-100">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+                    <div class="flex items-center gap-2">
+                        <div class="text-2xl">🔥</div>
+                        <h2 class="text-xl font-bold text-amber-900">Unassigned Player Pool</h2>
+                    </div>
+                    <span class="sm:ml-auto bg-amber-200 text-amber-800 text-xs font-bold px-3 py-1 rounded-full self-start">Awaiting Auction</span>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm">
+                <div class="overflow-x-auto w-full">
+                    <table class="w-full text-left text-sm min-w-[400px]">
                         <thead class="text-xs uppercase text-amber-700 border-b border-amber-200">
                             <tr><th class="pb-3 px-2">Player Name</th><th class="pb-3 px-2">Role</th><th class="pb-3 px-2 text-right">Status</th></tr>
                         </thead>
@@ -414,10 +446,10 @@
             <div class="grid lg:grid-cols-3 gap-8">
                 <!-- Current Player Card -->
                 <div class="lg:col-span-1">
-                    <div class="clean-card p-8 text-center bg-slate-900 text-white shadow-xl relative overflow-hidden h-full flex flex-col justify-center">
+                    <div class="clean-card p-6 sm:p-8 text-center bg-slate-900 text-white shadow-xl relative overflow-hidden h-full flex flex-col justify-center">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">👤</div>
                         <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">On The Block</h2>
-                        <h3 id="auction-player-name" class="text-4xl font-black text-white mb-2">---</h3>
+                        <h3 id="auction-player-name" class="text-3xl sm:text-4xl font-black text-white mb-2 break-words">---</h3>
                         <p id="auction-player-role" class="text-blue-400 font-medium mb-6">---</p>
                         
                         <div class="bg-white/10 rounded-xl p-4 mb-8 border border-white/20">
@@ -431,9 +463,9 @@
                 </div>
 
                 <!-- Assignment Actions -->
-                <div class="lg:col-span-2 clean-card p-6 flex flex-col">
+                <div class="lg:col-span-2 clean-card p-4 sm:p-6 flex flex-col">
                     <h3 class="font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">Assign to Franchise (Winning Bid)</h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8" id="auction-team-buttons">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-8" id="auction-team-buttons">
                         <!-- Populated dynamically based on Admin Access -->
                     </div>
 
@@ -458,34 +490,34 @@
             <div class="clean-card overflow-hidden max-w-4xl mx-auto shadow-2xl border-slate-200 bg-white">
                 
                 <!-- 1. GEN-Z SELECTION SCREEN (Default View) -->
-                <div id="content-hub-selection" class="block p-6 md:p-10">
-                    <div class="text-center mb-10">
+                <div id="content-hub-selection" class="block p-4 sm:p-6 md:p-10">
+                    <div class="text-center mb-8 sm:mb-10">
                         <h2 class="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight transform -skew-x-6 mb-2">Welcome to the Draft</h2>
                         <p class="text-slate-500 font-medium">Select an option to proceed to the secure portal.</p>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                         <!-- Registration Card -->
-                        <div onclick="switchInnerTab('hub', 'reg')" class="clean-card p-8 cursor-pointer relative overflow-hidden group bg-[#0a192f] border border-[#D4AF37]/30 hover:border-[#D4AF37] transition-all duration-300 transform hover:-translate-y-2 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_0_40px_rgba(212,175,55,0.3)] text-center flex flex-col items-center justify-center min-h-[280px]">
+                        <div onclick="switchInnerTab('hub', 'reg')" class="clean-card p-6 sm:p-8 cursor-pointer relative overflow-hidden group bg-[#0a192f] border border-[#D4AF37]/30 hover:border-[#D4AF37] transition-all duration-300 transform hover:-translate-y-2 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_0_40px_rgba(212,175,55,0.3)] text-center flex flex-col items-center justify-center min-h-[250px] sm:min-h-[280px]">
                             <div class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <span class="text-6xl mb-5 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">📝</span>
+                            <span class="text-5xl sm:text-6xl mb-4 sm:mb-5 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">📝</span>
                             <h3 class="text-2xl md:text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-yellow-200 transform -skew-x-6 mb-2 tracking-wide uppercase">New Player</h3>
                             <p class="text-slate-400 text-sm font-medium">Join the Deshgavhan Draft</p>
-                            <div class="mt-8 px-8 py-2.5 rounded-full border border-[#D4AF37]/50 text-[#D4AF37] text-xs font-bold uppercase tracking-widest group-hover:bg-gradient-to-r group-hover:from-[#D4AF37] group-hover:to-[#B8942E] group-hover:text-[#0a192f] group-hover:border-transparent transition-all">Start Registration →</div>
+                            <div class="mt-6 sm:mt-8 px-6 sm:px-8 py-2.5 rounded-full border border-[#D4AF37]/50 text-[#D4AF37] text-xs font-bold uppercase tracking-widest group-hover:bg-gradient-to-r group-hover:from-[#D4AF37] group-hover:to-[#B8942E] group-hover:text-[#0a192f] group-hover:border-transparent transition-all">Start Registration →</div>
                         </div>
 
                         <!-- Login Card -->
-                        <div onclick="switchInnerTab('hub', 'login')" class="clean-card p-8 cursor-pointer relative overflow-hidden group bg-[#0a192f] border border-blue-500/30 hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] text-center flex flex-col items-center justify-center min-h-[280px]">
+                        <div onclick="switchInnerTab('hub', 'login')" class="clean-card p-6 sm:p-8 cursor-pointer relative overflow-hidden group bg-[#0a192f] border border-blue-500/30 hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] text-center flex flex-col items-center justify-center min-h-[250px] sm:min-h-[280px]">
                             <div class="absolute inset-0 bg-gradient-to-bl from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <span class="text-6xl mb-5 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">🔐</span>
+                            <span class="text-5xl sm:text-6xl mb-4 sm:mb-5 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">🔐</span>
                             <h3 class="text-2xl md:text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 transform -skew-x-6 mb-2 tracking-wide uppercase">Existing Player</h3>
                             <p class="text-slate-400 text-sm font-medium">Access Your Dashboard</p>
-                            <div class="mt-8 px-8 py-2.5 rounded-full border border-blue-500/50 text-blue-400 text-xs font-bold uppercase tracking-widest group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white group-hover:border-transparent transition-all">Secure Login →</div>
+                            <div class="mt-6 sm:mt-8 px-6 sm:px-8 py-2.5 rounded-full border border-blue-500/50 text-blue-400 text-xs font-bold uppercase tracking-widest group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white group-hover:border-transparent transition-all">Secure Login →</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="p-6 md:p-10 relative">
+                <div class="p-4 sm:p-6 md:p-10 relative">
                     
                     <!-- 2. Reg Form -->
                     <div id="content-hub-reg" class="hide max-w-md mx-auto">
@@ -497,16 +529,16 @@
                         <form id="player-reg-form" onsubmit="handlePlayerRegistration(event)" class="space-y-4">
                             <div>
                                 <label class="block text-sm font-medium text-slate-700 mb-1">1. Village/City</label>
-                                <select id="reg-village" onchange="handleVillageChange(this)" required class="clean-input appearance-none bg-slate-50">
+                                <select id="reg-village" onchange="handleVillageChange(this)" required class="clean-input appearance-none bg-slate-50 w-full">
                                     <option value="">Select Village...</option>
                                     <option value="Deshgavhan">Deshgavhan</option>
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
-                            <div><label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label><input type="text" id="reg-name" required class="clean-input bg-slate-50"></div>
-                            <div><label class="block text-sm font-medium text-slate-700 mb-1">Mobile Number</label><input type="tel" id="reg-mobile" required class="clean-input bg-slate-50"></div>
+                            <div><label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label><input type="text" id="reg-name" required class="clean-input bg-slate-50 w-full"></div>
+                            <div><label class="block text-sm font-medium text-slate-700 mb-1">Mobile Number</label><input type="tel" id="reg-mobile" required class="clean-input bg-slate-50 w-full"></div>
                             <div><label class="block text-sm font-medium text-slate-700 mb-1">Role</label>
-                                <select id="reg-role" required class="clean-input appearance-none bg-slate-50">
+                                <select id="reg-role" required class="clean-input appearance-none bg-slate-50 w-full">
                                     <option value="">Select Role</option>
                                     <option value="Batsman">Batsman</option>
                                     <option value="Bowler">Bowler</option>
@@ -516,7 +548,7 @@
                             </div>
                             <div class="bg-blue-50/50 p-4 rounded-xl border border-blue-100 mt-2">
                                 <label class="block text-sm font-bold text-blue-900 mb-1">Create 4-Digit Security PIN</label>
-                                <input type="password" id="reg-pin" pattern="[0-9]{4}" maxlength="4" required placeholder="e.g. 1234" class="clean-input text-center tracking-widest font-mono text-lg !border-blue-200 focus:!border-blue-500">
+                                <input type="password" id="reg-pin" pattern="[0-9]{4}" maxlength="4" required placeholder="e.g. 1234" class="clean-input text-center tracking-widest font-mono text-lg !border-blue-200 focus:!border-blue-500 w-full">
                                 <p class="text-xs text-blue-600 mt-2 text-center">* Remember this PIN to access your profile later.</p>
                             </div>
                             <button type="submit" class="btn-primary w-full py-4 mt-6 text-lg shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1">Submit Application</button>
@@ -536,11 +568,11 @@
                         <form id="player-login-form" onsubmit="handlePlayerLogin(event)" class="space-y-5">
                             <div>
                                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1 text-center">Mobile Number</label>
-                                <input type="tel" id="login-mobile" required placeholder="Enter Mobile" class="clean-input text-center bg-slate-50 text-lg font-medium">
+                                <input type="tel" id="login-mobile" required placeholder="Enter Mobile" class="clean-input text-center bg-slate-50 text-lg font-medium w-full">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1 text-center">4-Digit PIN</label>
-                                <input type="password" id="login-pin" pattern="[0-9]{4}" maxlength="4" required placeholder="••••" class="clean-input text-center tracking-[0.5em] font-mono text-2xl bg-slate-50">
+                                <input type="password" id="login-pin" pattern="[0-9]{4}" maxlength="4" required placeholder="••••" class="clean-input text-center tracking-[0.5em] font-mono text-2xl bg-slate-50 w-full">
                             </div>
                             <button type="submit" class="btn-primary w-full py-4 mt-2 text-lg shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1">Login</button>
                         </form>
@@ -550,30 +582,30 @@
                     <div id="content-hub-dash" class="hide">
                         <!-- Authenticated Profile State -->
                         <div id="hub-dash-profile" class="block max-w-2xl mx-auto">
-                            <div class="flex items-center justify-between mb-8">
-                                <h2 class="text-2xl font-black italic text-slate-900 transform -skew-x-6 uppercase tracking-tight">Player Portal</h2>
-                                <button onclick="handlePlayerLogout()" class="text-xs font-bold text-red-500 hover:text-red-700 bg-red-50 px-4 py-2 rounded-lg border border-red-100 transition-colors uppercase tracking-widest">Secure Logout</button>
+                            <div class="flex items-center justify-between mb-6 sm:mb-8">
+                                <h2 class="text-xl sm:text-2xl font-black italic text-slate-900 transform -skew-x-6 uppercase tracking-tight">Player Portal</h2>
+                                <button onclick="handlePlayerLogout()" class="text-[10px] sm:text-xs font-bold text-red-500 hover:text-red-700 bg-red-50 px-3 py-2 rounded-lg border border-red-100 transition-colors uppercase tracking-widest">Secure Logout</button>
                             </div>
 
                             <div class="clean-card bg-[#0a192f] border-slate-800 p-6 md:p-8 mb-8 shadow-2xl relative overflow-hidden">
                                 <!-- Background Glow -->
                                 <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
                                 
-                                <div class="flex flex-col md:flex-row items-center md:items-start gap-6 relative z-10 text-center md:text-left">
+                                <div class="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6 relative z-10 text-center md:text-left">
                                     <!-- GenZ Styled Profile Avatar -->
-                                    <div id="profile-initial" class="w-24 h-24 bg-[#112240] border border-[#D4AF37]/50 text-transparent bg-clip-text bg-gradient-to-br from-[#D4AF37] to-yellow-200 rounded-2xl flex items-center justify-center text-5xl font-black italic shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] transform -skew-x-6 shrink-0 shadow-lg">P</div>
+                                    <div id="profile-initial" class="w-20 h-20 sm:w-24 sm:h-24 bg-[#112240] border border-[#D4AF37]/50 text-transparent bg-clip-text bg-gradient-to-br from-[#D4AF37] to-yellow-200 rounded-2xl flex items-center justify-center text-4xl sm:text-5xl font-black italic shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] transform -skew-x-6 shrink-0 shadow-lg">P</div>
                                     
                                     <div class="flex flex-col items-center md:items-start mt-2">
                                         <!-- GenZ Styled Profile Name -->
-                                        <h3 id="profile-name" class="text-3xl md:text-4xl font-black italic text-white drop-shadow-md transform -skew-x-6 uppercase tracking-tight mb-2">Player Name</h3>
+                                        <h3 id="profile-name" class="text-2xl sm:text-3xl md:text-4xl font-black italic text-white drop-shadow-md transform -skew-x-6 uppercase tracking-tight mb-1 sm:mb-2">Player Name</h3>
                                         
                                         <!-- GenZ Styled Profile Role -->
-                                        <p id="profile-role" class="text-sm md:text-base font-black italic text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#3b82f6] drop-shadow-sm transform -skew-x-6 uppercase tracking-widest">Role</p>
+                                        <p id="profile-role" class="text-xs sm:text-sm md:text-base font-black italic text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#3b82f6] drop-shadow-sm transform -skew-x-6 uppercase tracking-widest">Role</p>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                                 <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm text-center md:text-left">
                                     <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Mobile</p>
                                     <p id="profile-mobile" class="font-bold text-slate-900 text-lg">---</p>
@@ -582,7 +614,7 @@
                                     <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Origin</p>
                                     <p class="font-bold text-slate-900 text-lg">Deshgavhan</p>
                                 </div>
-                                <div class="bg-amber-50 p-5 rounded-2xl border border-amber-100 shadow-sm col-span-2 md:col-span-1 text-center md:text-left">
+                                <div class="bg-amber-50 p-5 rounded-2xl border border-amber-100 shadow-sm sm:col-span-2 md:col-span-1 text-center md:text-left">
                                     <p class="text-xs font-bold text-amber-600/70 uppercase tracking-widest mb-1">Draft Status</p>
                                     <p class="font-bold text-amber-700 text-lg flex items-center justify-center md:justify-start gap-2"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span> Awaiting Bid</p>
                                 </div>
@@ -599,12 +631,12 @@
         <div id="view-live" class="app-view">
             <div class="flex items-center gap-3 mb-6">
                 <span class="live-dot"></span>
-                <h1 class="text-3xl font-bold text-slate-900">Live Match Center</h1>
-                <span class="ml-auto text-xs font-bold text-slate-500 bg-slate-200 px-3 py-1 rounded-full flex items-center gap-2">Auto-Refresh <svg class="animate-spin h-3 w-3 text-slate-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg></span>
+                <h1 class="text-2xl sm:text-3xl font-bold text-slate-900">Live Match Center</h1>
+                <span class="ml-auto text-[10px] sm:text-xs font-bold text-slate-500 bg-slate-200 px-2 sm:px-3 py-1 rounded-full flex items-center gap-1 sm:gap-2">Auto <svg class="animate-spin h-3 w-3 text-slate-600 hidden sm:block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg></span>
             </div>
 
             <div class="clean-card bg-slate-900 text-white p-6 md:p-10 mb-8 border-slate-800 shadow-2xl">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
                     <!-- Team 1 -->
                     <div class="text-center w-full md:w-1/3">
                         <h2 class="text-xl md:text-2xl font-bold text-slate-300">AP11</h2>
@@ -613,22 +645,22 @@
                     </div>
                     
                     <!-- VS -->
-                    <div class="text-slate-500 font-black text-2xl italic">VS</div>
+                    <div class="text-slate-500 font-black text-xl sm:text-2xl italic">VS</div>
 
                     <!-- Team 2 -->
                     <div class="text-center w-full md:w-1/3">
                         <h2 class="text-xl md:text-2xl font-bold text-slate-300">Cotton11</h2>
-                        <div class="text-3xl font-bold text-slate-500 mt-4">Yet to bat</div>
+                        <div class="text-2xl sm:text-3xl font-bold text-slate-500 mt-2 sm:mt-4">Yet to bat</div>
                     </div>
                 </div>
 
-                <div class="border-t border-slate-700 mt-8 pt-6 grid grid-cols-2 gap-6 text-sm">
+                <div class="border-t border-slate-700 mt-6 sm:mt-8 pt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
                     <div>
                         <p class="text-slate-400 uppercase tracking-widest text-xs mb-2">Current Batters</p>
                         <div class="flex justify-between font-bold"><span class="text-white">Rahul D. *</span> <span class="text-amber-400">42 (18)</span></div>
                         <div class="flex justify-between font-bold mt-1"><span class="text-slate-300">Amit S.</span> <span class="text-amber-400">12 (8)</span></div>
                     </div>
-                    <div>
+                    <div class="border-t border-slate-800 pt-4 sm:border-0 sm:pt-0">
                         <p class="text-slate-400 uppercase tracking-widest text-xs mb-2">Current Bowler</p>
                         <div class="flex justify-between font-bold"><span class="text-white">Jasprit</span> <span class="text-blue-400">2-18 (1.2)</span></div>
                     </div>
@@ -647,13 +679,13 @@
                 <div class="clean-card p-6 bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-100">
                     <h2 class="text-lg font-bold text-indigo-900 mb-4 flex items-center gap-2">🧠 AI Player Ranking</h2>
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-indigo-50 mb-3 flex items-center gap-4">
-                        <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center font-bold text-indigo-600">#1</div>
-                        <div><p class="font-bold text-slate-900">Ratan Huse</p><p class="text-xs text-slate-500">Form Rating: 99/100</p></div>
+                        <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center font-bold text-indigo-600 shrink-0">#1</div>
+                        <div class="truncate"><p class="font-bold text-slate-900 truncate">Ratan Huse</p><p class="text-xs text-slate-500">Form Rating: 99/100</p></div>
                         <span class="ml-auto text-xl">🔥</span>
                     </div>
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-indigo-50 flex items-center gap-4">
-                        <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center font-bold text-slate-600">#2</div>
-                        <div><p class="font-bold text-slate-900">Gajanan Devare</p><p class="text-xs text-slate-500">Form Rating: 96/100</p></div>
+                        <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center font-bold text-slate-600 shrink-0">#2</div>
+                        <div class="truncate"><p class="font-bold text-slate-900 truncate">Gajanan Devare</p><p class="text-xs text-slate-500">Form Rating: 96/100</p></div>
                         <span class="ml-auto text-xl">🎯</span>
                     </div>
                 </div>
@@ -662,11 +694,11 @@
                 <div class="clean-card p-0 overflow-hidden">
                     <div class="bg-slate-50 px-4 py-3 border-b border-slate-100 font-bold text-slate-700">Top Batsmen</div>
                     <ul class="divide-y divide-slate-100 text-sm">
-                        <li class="p-4 flex justify-between items-center"><span class="font-medium">1. Ratan Huse <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(AP11)</span></span> <span class="font-bold text-blue-600">412 Runs</span></li>
-                        <li class="p-4 flex justify-between items-center"><span class="font-medium">2. Deepak Karad <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Cotton11)</span></span> <span class="font-bold text-blue-600">385 Runs</span></li>
-                        <li class="p-4 flex justify-between items-center"><span class="font-medium">3. Akash Ghatte <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Balkrushna11)</span></span> <span class="font-bold text-blue-600">340 Runs</span></li>
-                        <li class="p-4 flex justify-between items-center"><span class="font-medium">4. AR Huse <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Ajinkya11)</span></span> <span class="font-bold text-blue-600">290 Runs</span></li>
-                        <li class="p-4 flex justify-between items-center"><span class="font-medium">5. Sameer <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Ankushraj11)</span></span> <span class="font-bold text-blue-600">250 Runs</span></li>
+                        <li class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1"><span class="font-medium">1. Ratan Huse <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(AP11)</span></span> <span class="font-bold text-blue-600">412 Runs</span></li>
+                        <li class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1"><span class="font-medium">2. Deepak Karad <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Cotton11)</span></span> <span class="font-bold text-blue-600">385 Runs</span></li>
+                        <li class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1"><span class="font-medium">3. Akash Ghatte <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Balkrushna11)</span></span> <span class="font-bold text-blue-600">340 Runs</span></li>
+                        <li class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1"><span class="font-medium">4. AR Huse <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Ajinkya11)</span></span> <span class="font-bold text-blue-600">290 Runs</span></li>
+                        <li class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1"><span class="font-medium">5. Sameer <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Ankushraj11)</span></span> <span class="font-bold text-blue-600">250 Runs</span></li>
                     </ul>
                 </div>
 
@@ -674,19 +706,19 @@
                 <div class="clean-card p-0 overflow-hidden">
                     <div class="bg-slate-50 px-4 py-3 border-b border-slate-100 font-bold text-slate-700">Top Bowlers</div>
                     <ul class="divide-y divide-slate-100 text-sm">
-                        <li class="p-4 flex justify-between items-center"><span class="font-medium">1. Gajanan Devare <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(AP11)</span></span> <span class="font-bold text-emerald-600">24 Wkts</span></li>
-                        <li class="p-4 flex justify-between items-center"><span class="font-medium">2. Rushikesh <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Cotton11)</span></span> <span class="font-bold text-emerald-600">21 Wkts</span></li>
-                        <li class="p-4 flex justify-between items-center"><span class="font-medium">3. Mangesh Huse <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Balkrushna11)</span></span> <span class="font-bold text-emerald-600">18 Wkts</span></li>
-                        <li class="p-4 flex justify-between items-center"><span class="font-medium">4. Vijay Huse <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Ajinkya11)</span></span> <span class="font-bold text-emerald-600">15 Wkts</span></li>
-                        <li class="p-4 flex justify-between items-center"><span class="font-medium">5. Swapnil Nagre <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Ankushraj11)</span></span> <span class="font-bold text-emerald-600">12 Wkts</span></li>
+                        <li class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1"><span class="font-medium">1. Gajanan Devare <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(AP11)</span></span> <span class="font-bold text-emerald-600">24 Wkts</span></li>
+                        <li class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1"><span class="font-medium">2. Rushikesh <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Cotton11)</span></span> <span class="font-bold text-emerald-600">21 Wkts</span></li>
+                        <li class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1"><span class="font-medium">3. Mangesh Huse <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Balkrushna11)</span></span> <span class="font-bold text-emerald-600">18 Wkts</span></li>
+                        <li class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1"><span class="font-medium">4. Vijay Huse <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Ajinkya11)</span></span> <span class="font-bold text-emerald-600">15 Wkts</span></li>
+                        <li class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1"><span class="font-medium">5. Swapnil Nagre <span class="text-[10px] font-bold text-slate-400 ml-1 uppercase">(Ankushraj11)</span></span> <span class="font-bold text-emerald-600">12 Wkts</span></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Charts -->
-            <div class="clean-card p-6">
+            <div class="clean-card p-4 sm:p-6 overflow-hidden">
                 <h2 class="text-lg font-bold text-slate-900 mb-6">Tournament Scoring Trends</h2>
-                <div class="chart-container"><canvas id="statsChart"></canvas></div>
+                <div class="chart-container overflow-x-auto w-full"><div class="min-w-[400px] h-[300px]"><canvas id="statsChart"></canvas></div></div>
             </div>
         </div>
 
@@ -738,7 +770,7 @@
                     <p class="text-sm font-medium text-slate-500 uppercase tracking-widest">Restricted Override Protocol</p>
                 </div>
                 
-                <div class="clean-card bg-[#0a192f] border border-red-500/30 p-8 shadow-[0_10px_40px_rgba(220,38,38,0.15)] relative overflow-hidden group">
+                <div class="clean-card bg-[#0a192f] border border-red-500/30 p-6 sm:p-8 shadow-[0_10px_40px_rgba(220,38,38,0.15)] relative overflow-hidden group">
                     <!-- Background ambient glow -->
                     <div class="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none group-hover:bg-red-600/20 transition-colors duration-500"></div>
                     
@@ -839,8 +871,30 @@
             isAdmin: false // Tracks if user has unlocked the admin panel
         };
 
+        // --- MOBILE MENU LOGIC ---
+        let mobileMenuOpen = false;
+        function toggleMobileMenu(forceState) {
+            const nav = document.getElementById('mobile-nav');
+            if (typeof forceState === 'boolean') {
+                mobileMenuOpen = forceState;
+            } else {
+                mobileMenuOpen = !mobileMenuOpen;
+            }
+            
+            if (mobileMenuOpen) {
+                nav.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden'; // Stop background scrolling
+            } else {
+                nav.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            }
+        }
+
         // --- 2. Navigation & View Logic ---
         function navigateTo(viewId) {
+            // Close mobile menu if it's open
+            toggleMobileMenu(false);
+
             // Hide all views
             document.querySelectorAll('.app-view').forEach(el => el.classList.remove('active-view'));
             // Show target
@@ -883,16 +937,6 @@
             if(targetTab) targetTab.classList.add('active');
         }
 
-        function switchInnerTab(group, tabId) {
-            // Hide all contents in group
-            document.querySelectorAll(`[id^="content-${group}-"]`).forEach(el => el.classList.add('hide'));
-            // Deactivate all buttons in group
-            document.querySelectorAll(`[id^="tab-${group}-"]`).forEach(el => el.classList.remove('active'));
-            // Show/Activate target
-            document.getElementById(`content-${group}-${tabId}`).classList.remove('hide');
-            document.getElementById(`tab-${group}-${tabId}`).classList.add('active');
-        }
-
         // --- 3. Dynamic UI Rendering ---
         function renderTeams() {
             const grid = document.getElementById('teams-grid');
@@ -912,17 +956,17 @@
                 const details = teamDetails[team] || { owner: 'Unknown', grad: 'from-slate-500 to-slate-700' };
                 
                 const html = `
-                    <div onclick="showTeamModal('${team}')" class="clean-card clean-card-hover p-6 cursor-pointer flex items-center justify-between relative overflow-hidden group border-2 border-transparent hover:border-slate-200">
+                    <div onclick="showTeamModal('${team}')" class="clean-card clean-card-hover p-4 sm:p-6 cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between relative overflow-hidden group border-2 border-transparent hover:border-slate-200">
                         <!-- Subtle background glow on hover -->
                         <div class="absolute inset-0 bg-gradient-to-br ${details.grad} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-300 pointer-events-none"></div>
                         
-                        <div>
-                            <h3 class="font-black text-2xl text-slate-900 mb-2 uppercase tracking-tight">${team}</h3>
+                        <div class="w-full">
+                            <h3 class="font-black text-xl sm:text-2xl text-slate-900 mb-2 uppercase tracking-tight">${team}</h3>
                             
                             <!-- GenZ Stylish Owner Display -->
                             <div class="mb-4">
                                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">Franchise Owner</span>
-                                <span class="text-xl md:text-2xl font-black italic text-transparent bg-clip-text bg-gradient-to-r ${details.grad} drop-shadow-sm transform -skew-x-6 inline-block">
+                                <span class="text-lg sm:text-xl md:text-2xl font-black italic text-transparent bg-clip-text bg-gradient-to-r ${details.grad} drop-shadow-sm transform -skew-x-6 inline-block">
                                     ${details.owner}
                                 </span>
                             </div>
@@ -931,7 +975,7 @@
                                 🏏 ${count} Players Drafted
                             </p>
                         </div>
-                        <div class="w-12 h-12 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center text-slate-400 group-hover:translate-x-2 transition-transform shadow-sm">→</div>
+                        <div class="hidden sm:flex w-12 h-12 rounded-full bg-slate-50 border-2 border-slate-100 items-center justify-center text-slate-400 group-hover:translate-x-2 transition-transform shadow-sm shrink-0">→</div>
                     </div>
                 `;
                 grid.innerHTML += html;
